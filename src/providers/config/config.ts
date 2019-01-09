@@ -1,0 +1,45 @@
+import { Injectable } from '@angular/core';
+
+let configKeyName = "config";
+
+@Injectable()
+export class ConfigProvider {
+
+  private config = {
+    showSlide: false,
+    name: "",
+    username: "",
+  }
+
+  constructor() {
+    
+  }
+
+  //Recupera dados do localstorage
+  getConfigData():any{
+    return localStorage.getItem(configKeyName) || {};
+  }
+
+  //Grava dados do localstorage
+  setConfigData(showSlide?:boolean, name?:string, username?:string):any{
+    let config = {
+      showSlide: false,
+      name: "",
+      username: "",
+    }
+
+    if(showSlide){
+      config.showSlide = showSlide;
+    }
+
+    if(name){
+      config.name = name;
+    }
+
+    if(username){
+      config.username = username;
+    }
+
+    localStorage.setItem(configKeyName, JSON.stringify(config));
+  }
+}
