@@ -1,0 +1,58 @@
+S
+<!--
+  Generated template for the CadUserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Cadastro de Usuario</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <!-- Iniciando o formulario, dizendo os seguintes inputs fazem parte do group userForm, 
+    informando tambem que quando realizar o submit, realize a funcao salvar() dentro de cad-usuario.ts -->
+  <form padding [formGroup]="userForm" (submit)="salvar()" novalidate>
+    <!-- Informe seu nome -->
+    <ion-item>
+      <!-- formControlName: informo o mesmo nome que eu declarei no cad-usuario.ts. posteriormente escolho o tipo do input e uma mensagem de placeholder no input.-->
+      <ion-input formControlName="nome" type="text" placeholder="Digite seu nome" clearInput clearOnEdit="false">
+      </ion-input>
+    </ion-item>
+    <h6 *ngIf="msgName" class="error">{{ msgName}}</h6>
+
+    <!-- Informe seu telefone -->
+    <ion-item>
+      <ion-input formControlName="telefone" type="number" placeholder="Digite seu telefone - dois digitos ddd + 9 digitos numero" clearInput clearOnEdit="false">
+      </ion-input>
+    </ion-item>
+    <h6 *ngIf="msgTelefone" class="error">{{ msgTelefone}}</h6>
+
+    <!-- Informe sua data de nascimento -->
+    <ion-item>
+      <ion-input formControlName="data" type="date" placeholder="Informe sua Data de Nascimento" clearInput clearOnEdit="false">
+      </ion-input>
+    </ion-item>
+    <h6 *ngIf="msgData" class="error">{{ msgData}}</h6>
+
+    <!-- Informe seu e-Mail -->
+    <ion-item>
+      <ion-input formControlName="email" type="text" placeholder="Digite seu E-Mail" clearInput clearOnEdit="false">
+      </ion-input>
+    </ion-item>
+    <h6 *ngIf="msgEmail" class="error">{{ msgEmail}}</h6>
+
+    <!-- Informe seu C.P.F. -->
+    <ion-item>
+      <ion-input formControlName="cpf" type="number" placeholder="Digite seu CPF" clearInput clearOnEdit="false">
+      </ion-input>
+    </ion-item>
+    <h6 *ngIf="msgCpf" class="error">{{ msgCpf}}</h6>
+    <button ion-button block color="secondary">Cadastrar</button>
+  </form>
+  <button ion-button block (click)="limpar()">Limpar</button>
+</ion-content>
